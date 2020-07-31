@@ -33,10 +33,11 @@ public class Television extends Electrodomestico {
 		return resolucion;
 	}
 
+	// fin get
+
 	public boolean isSintonizadorTDT() {
 		return sintonizadorTDT;
 	}
-	// fin get
 
 	public double precioFinal() {
 		double plus = super.precioFinal();
