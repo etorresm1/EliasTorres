@@ -1,96 +1,87 @@
 package evaluacionFinal;
 
-import java.util.Arrays;
-
 public class Carro {
 
 	// atributos
-	public int cantidadOcupantes;
-	public String fechaIngreso;
-	public int fila;
-	public int columna;
+	private int cantidadOcupantes;
+	private String fechaIngreso;
+	private int ubicacionFila;
+	private int ubicacionColumna;
+	private int numeroImpactos;
+	private int espacios;
 
-	/**
-	 * 
-	 */
+	// Constructor
 	public Carro() {
-		super();
 	}
 
-	/**
-	 * @param cantidadOcupantes
-	 * @param fechaIngreso
-	 * @param fila
-	 * @param columna
-	 */
-	public Carro(int cantidadOcupantes, String fechaIngreso, int fila, int columna) {
-		super();
+	public Carro(int cantidadOcupantes, String fechaIngreso, int ubicacionFila, int ubicacionColumna, int espacios) {
 		this.cantidadOcupantes = cantidadOcupantes;
 		this.fechaIngreso = fechaIngreso;
-		this.fila = fila;
-		this.columna = columna;
+		this.ubicacionFila = ubicacionFila;
+		this.ubicacionColumna = ubicacionColumna;
+		this.numeroImpactos = 0;
+		this.espacios = espacios;
 	}
 
-	/**
-	 * @return the cantidadOcupantes
-	 */
+	// Getters & Setters
 	public int getCantidadOcupantes() {
 		return cantidadOcupantes;
 	}
 
-	/**
-	 * @param cantidadOcupantes the cantidadOcupantes to set
-	 */
 	public void setCantidadOcupantes(int cantidadOcupantes) {
 		this.cantidadOcupantes = cantidadOcupantes;
 	}
 
-	/**
-	 * @return the fechaIngreso
-	 */
 	public String getFechaIngreso() {
 		return fechaIngreso;
 	}
 
-	/**
-	 * @param fechaIngreso the fechaIngreso to set
-	 */
 	public void setFechaIngreso(String fechaIngreso) {
 		this.fechaIngreso = fechaIngreso;
 	}
 
-	/**
-	 * @return the fila
-	 */
-	public int getFila() {
-		return fila;
+	public int getUbicacionFila() {
+		return ubicacionFila;
 	}
 
-	/**
-	 * @param fila the fila to set
-	 */
-	public void setFila(int fila) {
-		this.fila = fila;
+	public void setUbicacionFila(int ubicacionFila) {
+		this.ubicacionFila = ubicacionFila;
 	}
 
-	/**
-	 * @return the columna
-	 */
-	public int getColumna() {
-		return columna;
+	public int getUbicacionColumna() {
+		return ubicacionColumna;
 	}
 
-	/**
-	 * @param columna the columna to set
-	 */
-	public void setColumna(int columna) {
-		this.columna = columna;
+	public void setUbicacionColumna(int ubicacionColumna) {
+		this.ubicacionColumna = ubicacionColumna;
+	}
+
+	public int getNumeroImpactos() {
+		return numeroImpactos;
+	}
+
+	public void setNumeroImpactos(int numeroImpactos) {
+		this.numeroImpactos = numeroImpactos;
+	}
+
+	public int getEspacios() {
+		return espacios;
+	}
+
+	public void setEspacios(int espacios) {
+		this.espacios = espacios;
 	}
 
 	@Override
 	public String toString() {
-		return "Carro [cantidadOcupantes=" + cantidadOcupantes + ", fechaIngreso=" + fechaIngreso + ", fila=" + fila
-				+ ", columna=" + columna + "]";
+		return "Carro{" + "CantidadOcupantes=" + cantidadOcupantes + ", FechaIngreso='" + fechaIngreso + '\''
+				+ ", UbicacionFila=" + ubicacionFila + ", UbicacionColumna=" + ubicacionColumna + '}';
+	}
+
+	public void DesplegarDatos() {
+		System.out.println("La cantidad de ocupantes es: " + getCantidadOcupantes());
+		System.out.println("Fecha de Ingreso: " + getFechaIngreso());
+		System.out.println("Las Cordenadas son: " + getUbicacionFila() + "," + getUbicacionColumna());
 	}
 
 }

@@ -4,62 +4,40 @@ public class Caguano extends Carro {
 
 	// atributos
 	private int alcanceTiro;
-	private String colorConfeti;
+    private String colorConfeti;
+    
+    // Constructor
+    public Caguano() {
+    }
 
-	/**
-	 * 
-	 */
-	public Caguano() {
-		super();
-	}
+    public Caguano(int cantidadOcupantes, String fechaIngreso, int ubicacionFila, int ubicacionColumna, int alcanceTiro, String colorConfeti) {
+        super(cantidadOcupantes, fechaIngreso, ubicacionFila, ubicacionColumna, 2);
+        this.alcanceTiro = alcanceTiro;
+        this.colorConfeti = colorConfeti;
+    }
 
-	/**
-	 * @param cantidadOcupantes
-	 * @param fechaIngreso
-	 * @param fila
-	 * @param columna
-	 * @param alcanceTiro
-	 * @param colorConfeti
-	 */
-	public Caguano(int cantidadOcupantes, String fechaIngreso, int fila, int columna, int alcanceTiro,
-			String colorConfeti) {
-		super(cantidadOcupantes, fechaIngreso, fila, columna);
-		this.alcanceTiro = alcanceTiro;
-		this.colorConfeti = colorConfeti;
-	}
+    // Getters & Setters
+    public int getAlcanceTiro() {
+        return alcanceTiro;
+    }
 
-	/**
-	 * @return the alcanceTiro
-	 */
-	public int getAlcanceTiro() {
-		return alcanceTiro;
-	}
+    public void setAlcanceTiro(int alcanceTiro) {
+        this.alcanceTiro = alcanceTiro;
+    }
 
-	/**
-	 * @return the colorConfeti
-	 */
-	public String getColorConfeti() {
-		return colorConfeti;
-	}
+    public String getColorConfeti() {
+        return colorConfeti;
+    }
 
-	/**
-	 * @param alcanceTiro the alcanceTiro to set
-	 */
-	public void setAlcanceTiro(int alcanceTiro) {
-		this.alcanceTiro = alcanceTiro;
-	}
+    public void setColorConfeti(String colorConfeti) {
+        this.colorConfeti = colorConfeti;
+    }
 
-	/**
-	 * @param colorConfeti the colorConfeti to set
-	 */
-	public void setColorConfeti(String colorConfeti) {
-		this.colorConfeti = colorConfeti;
-	}
-	
-	@Override
-	public String toString() {
-		return "Caguano [alcanceTiro=" + alcanceTiro + ", colorConfeti=" + colorConfeti + "]";
-	}
-
-
+    @Override
+    public String toString() {
+        return "Caguano{" +
+                "AlcanceTiro=" + alcanceTiro +
+                ", ColorConfeti='" + colorConfeti + '\'' +
+                '}';
+    }
 }

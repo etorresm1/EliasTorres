@@ -1,27 +1,69 @@
 package evaluacionFinal;
 
-import java.util.ArrayList;
+import java.util.Scanner;
 
 public class Main {
 
-	public static ArrayList<Carro> listaCarros = new ArrayList<Carro>();
+	static Scanner sc = new Scanner(System.in);
 
 	public static void main(String[] args) {
 
-		Kromi kromi1 = new Kromi(4, "03-08-2020", 3, 5, "15-12-2005", "Mercedez Benz");
-		Caguano caguano1 = new Caguano(5, "03-08-2020", 2, 7, 10, "Rojo");
-		Trupalla trupalla1 = new Trupalla(2, "03-08-2020", 7, 1, null, "Elias");
+		 Tablero tableroFinal = new Tablero();
 
-		listaCarros.add(kromi1);
-		listaCarros.add(caguano1);
-		listaCarros.add(trupalla1);
+	        tableroFinal.mostrarMatriz();
+	        tableroFinal.crearCarro();
+	        int menu = 0;
+	        do {
+	            System.out.println();
+	            System.out.println();
+	            System.out.println("================");
+	            System.out.println("||----Menu----||" + "\n================");
 
-		for (Carro carros : listaCarros) {
+	            System.out.println("[    1.- Lanzar Huevo     ]");
+	            System.out.println("[    2.- Mostrar Matriz   ]");
+	            System.out.println("[    3.- Mostrar puntaje  ]");
 
-			System.out.println("Cantidad de ocupantes: " + carros.getCantidadOcupantes() + " Fecha Ingreso: " + carros.getColumna()
-					+ " " + carros.getFila() + " " + carros.getFechaIngreso());
-		}
+	            System.out.println("{    0.- Salir del programa  }");
 
-	}
+	            System.out.println("Ingresa tu Opción");
+	            menu = sc.nextInt();
+
+
+	            switch (menu) {
+
+	                case 1:
+	                    System.out.println("-------Lanzar Huevo--------" + "\n______________________");
+	                    System.out.println("Ingresa las coordenadas donde lanzaras el huevo" + "\n recuerda que las coordenadas son del 0 al 14");
+	                    System.out.println();
+
+
+	                    System.out.println("Ingresa el numero de la fila: ");
+	                    int fila = sc.nextInt();
+	                    System.out.println("Ingresa el numero de la columna: ");
+	                    int columna = sc.nextInt();
+
+
+	                    if (tableroFinal.golpeaCarro(fila, columna)) {
+	                        System.out.println("¡Felicidades le diste! :)");
+	                    } else {
+	                        System.out.println("Lo siento, No le diste a nada :(");
+	                    }
+	                    tableroFinal.lanzarHuevo(fila, columna);
+
+	                    break;
+
+	                case 2:
+
+	                    tableroFinal.mostrarMatriz();
+	                    break;
+
+	                case 3:
+	                    tableroFinal.puntajeTotal();
+	                    break;
+	            }
+	        }
+	        while (menu != 0);
+
+    }
 
 }

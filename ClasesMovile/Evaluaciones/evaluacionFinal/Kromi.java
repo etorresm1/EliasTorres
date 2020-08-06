@@ -3,61 +3,40 @@ package evaluacionFinal;
 public class Kromi extends Carro {
 
 	// atributos
-	private String anioFabricacion;
+	private int anioFabricacion;
 	private String marca;
 
-	/**
-	 * 
-	 */
+	// Constructor
 	public Kromi() {
-		super();
 	}
 
-	/**
-	 * @param cantidadOcupantes
-	 * @param fechaIngreso
-	 * @param fila
-	 * @param columna
-	 * @param anioFabricacion
-	 * @param marca
-	 */
-	public Kromi(int cantidadOcupantes, String fechaIngreso, int fila, int columna, String anioFabricacion, String marca) {
-		super(cantidadOcupantes, fechaIngreso, fila, columna);
+	public Kromi(int cantidadOcupantes, String fechaIngreso, int ubicacionFila, int ubicacionColumna,
+			int anioFabricacion, String marca) {
+		super(cantidadOcupantes, fechaIngreso, ubicacionFila, ubicacionColumna, 3);
 		this.anioFabricacion = anioFabricacion;
 		this.marca = marca;
 	}
 
-	/**
-	 * @return the anioFabricacion
-	 */
-	public String getAnioFabricacion() {
+	// Getters & Setters
+	public int getAnioFabricacion() {
 		return anioFabricacion;
 	}
 
-	/**
-	 * @return the marca
-	 */
+	public void setAnioFabricacion(int anioFabricacion) {
+		this.anioFabricacion = anioFabricacion;
+	}
+
 	public String getMarca() {
 		return marca;
 	}
 
-	/**
-	 * @param anioFabricacion the anioFabricacion to set
-	 */
-	public void setAnioFabricacion(String anioFabricacion) {
-		this.anioFabricacion = anioFabricacion;
-	}
-
-	/**
-	 * @param marca the marca to set
-	 */
 	public void setMarca(String marca) {
 		this.marca = marca;
 	}
 
 	@Override
 	public String toString() {
-		return "Kromi [anioFabricacion=" + anioFabricacion + ", marca=" + marca + "]";
+		return "Kromi{" + "AñoFabricacion=" + anioFabricacion + ", Marca='" + marca + '\'' + '}';
 	}
 
 }

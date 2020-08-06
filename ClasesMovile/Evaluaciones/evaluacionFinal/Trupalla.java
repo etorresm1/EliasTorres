@@ -1,67 +1,42 @@
 package evaluacionFinal;
 
-import java.util.Arrays;
-
 public class Trupalla extends Carro {
 
 	// Atributos
-	int nivelArmadura[] = { 1, 2, 3, 4, 5 };
-	private String nombreManipulador;
+	private int nivelArmadura;
+	private String nombreConductor;
 
-	/**
-	 * 
-	 */
+	// Constructor
 	public Trupalla() {
-		super();
 	}
 
-	/**
-	 * @param cantidadOcupantes
-	 * @param fechaIngreso
-	 * @param fila
-	 * @param columna
-	 * @param nivelArmadura
-	 * @param nombreManipulador
-	 */
-	public Trupalla(int cantidadOcupantes, String fechaIngreso, int fila, int columna, int[] nivelArmadura,
-			String nombreManipulador) {
-		super(cantidadOcupantes, fechaIngreso, fila, columna);
+	public Trupalla(int cantidadOcupantes, String fechaIngreso, int ubicacionFila, int ubicacionColumna,
+			int nivelArmadura, String nombreConductor) {
+		super(cantidadOcupantes, fechaIngreso, ubicacionFila, ubicacionColumna, 1);
 		this.nivelArmadura = nivelArmadura;
-		this.nombreManipulador = nombreManipulador;
+		this.nombreConductor = nombreConductor;
 	}
 
-	/**
-	 * @return the nivelArmadura
-	 */
-	public int[] getNivelArmadura() {
+	// Getters & Setters
+	public int getnivelArmadura() {
 		return nivelArmadura;
 	}
 
-	/**
-	 * @return the nombreManipulador
-	 */
-	public String getNombreManipulador() {
-		return nombreManipulador;
-	}
-
-	/**
-	 * @param nivelArmadura the nivelArmadura to set
-	 */
-	public void setNivelArmadura(int[] nivelArmadura) {
+	public void setnivelArmadura(int nivelArmadura) {
 		this.nivelArmadura = nivelArmadura;
 	}
 
-	/**
-	 * @param nombreManipulador the nombreManipulador to set
-	 */
-	public void setNombreManipulador(String nombreManipulador) {
-		this.nombreManipulador = nombreManipulador;
+	public String getnombreConductor() {
+		return nombreConductor;
+	}
+
+	public void setnombreConductor(String nombreConductor) {
+		this.nombreConductor = nombreConductor;
 	}
 
 	@Override
 	public String toString() {
-		return "Trupalla [nivelArmadura=" + Arrays.toString(nivelArmadura) + ", nombreManipulador=" + nombreManipulador
-				+ "]";
+		return "Trupalla{" + "NivelArmadura=" + nivelArmadura + ", NombreConductor='" + nombreConductor + '\'' + '}';
 	}
 
 }
