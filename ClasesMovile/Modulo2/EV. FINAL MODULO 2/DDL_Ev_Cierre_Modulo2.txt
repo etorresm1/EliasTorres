@@ -1,0 +1,164 @@
+-- Generado por Oracle SQL Developer Data Modeler 20.2.0.167.1538
+--   en:        2020-08-25 00:32:19 CLT
+--   sitio:      Oracle Database 11g
+--   tipo:      Oracle Database 11g
+
+
+
+-- predefined type, no DDL - MDSYS.SDO_GEOMETRY
+
+-- predefined type, no DDL - XMLTYPE
+
+CREATE TABLE alternativas (
+    idalternativas         VARCHAR2(50 BYTE) NOT NULL,
+    descripcion            VARCHAR2(200 BYTE) NOT NULL,
+    resultado              VARCHAR2(50 BYTE) NOT NULL,
+    porcentaje             INTEGER NOT NULL,
+    preguntas_idpreguntas  VARCHAR2(50 BYTE) NOT NULL
+);
+
+ALTER TABLE alternativas ADD CONSTRAINT alternativas_pk PRIMARY KEY ( idalternativas );
+
+CREATE TABLE curso (
+    idcurso                  VARCHAR2(50 BYTE) NOT NULL,
+    nombrecurso              VARCHAR2(100 BYTE) NOT NULL,
+    examinador_idexaminador  VARCHAR2(50) NOT NULL,
+    test_idtest              VARCHAR2(50 BYTE) NOT NULL
+);
+
+CREATE UNIQUE INDEX curso__idx ON
+    curso (
+        examinador_idexaminador
+    ASC );
+
+ALTER TABLE curso ADD CONSTRAINT curso_pk PRIMARY KEY ( idcurso );
+
+CREATE TABLE estudiante (
+    idestudiante   VARCHAR2(50 BYTE) NOT NULL,
+    nombre         VARCHAR2(100 BYTE) NOT NULL,
+    apellidos      VARCHAR2(100 BYTE) NOT NULL,
+    rut            VARCHAR2(20 BYTE) NOT NULL,
+    curso_idcurso  VARCHAR2(50 BYTE) NOT NULL
+);
+
+ALTER TABLE estudiante ADD CONSTRAINT estudiante_pk PRIMARY KEY ( idestudiante );
+
+CREATE TABLE examinador (
+    idexaminador      VARCHAR2(50) NOT NULL,
+    nombreexaminador  VARCHAR2(100 BYTE) NOT NULL
+);
+
+ALTER TABLE examinador ADD CONSTRAINT examinador_pk PRIMARY KEY ( idexaminador );
+
+CREATE TABLE preguntas (
+    idpregunta       VARCHAR2(50 BYTE) NOT NULL,
+    enunciado        VARCHAR2(100 BYTE) NOT NULL,
+    puntajeasociado  INTEGER NOT NULL,
+    test_idtest      VARCHAR2(50 BYTE) NOT NULL
+);
+
+ALTER TABLE preguntas ADD CONSTRAINT preguntas_pk PRIMARY KEY ( idpregunta );
+
+CREATE TABLE test (
+    idtest                   VARCHAR2(50 BYTE) NOT NULL,
+    nombretest               VARCHAR2(100 BYTE) NOT NULL,
+    descripciontest          VARCHAR2(200 BYTE) NOT NULL,
+    programa                 VARCHAR2(100 BYTE) NOT NULL,
+    unidad                   VARCHAR2(100 BYTE) NOT NULL,
+    fechacreacion            DATE NOT NULL,
+    estudiante_idestudiante  VARCHAR2(50 BYTE) NOT NULL,
+    examinador_idexaminador  VARCHAR2(50) NOT NULL
+);
+
+CREATE UNIQUE INDEX test__idx ON
+    test (
+        estudiante_idestudiante
+    ASC );
+
+ALTER TABLE test ADD CONSTRAINT test_pk PRIMARY KEY ( idtest );
+
+CREATE TABLE testaestudiante (
+    test_idtest              VARCHAR2(50 BYTE) NOT NULL,
+    estudiante_idestudiante  VARCHAR2(50 BYTE) NOT NULL
+);
+
+ALTER TABLE alternativas
+    ADD CONSTRAINT alternativas_preguntas_fk FOREIGN KEY ( preguntas_idpreguntas )
+        REFERENCES preguntas ( idpregunta );
+
+ALTER TABLE curso
+    ADD CONSTRAINT curso_examinador_fk FOREIGN KEY ( examinador_idexaminador )
+        REFERENCES examinador ( idexaminador );
+
+ALTER TABLE curso
+    ADD CONSTRAINT curso_test_fk FOREIGN KEY ( test_idtest )
+        REFERENCES test ( idtest );
+
+ALTER TABLE estudiante
+    ADD CONSTRAINT estudiante_curso_fk FOREIGN KEY ( curso_idcurso )
+        REFERENCES curso ( idcurso );
+
+ALTER TABLE preguntas
+    ADD CONSTRAINT preguntas_test_fk FOREIGN KEY ( test_idtest )
+        REFERENCES test ( idtest );
+
+ALTER TABLE test
+    ADD CONSTRAINT test_estudiante_fk FOREIGN KEY ( estudiante_idestudiante )
+        REFERENCES estudiante ( idestudiante );
+
+ALTER TABLE test
+    ADD CONSTRAINT test_examinador_fk FOREIGN KEY ( examinador_idexaminador )
+        REFERENCES examinador ( idexaminador );
+
+ALTER TABLE testaestudiante
+    ADD CONSTRAINT testaestudiante_estudiante_fk FOREIGN KEY ( estudiante_idestudiante )
+        REFERENCES estudiante ( idestudiante );
+
+ALTER TABLE testaestudiante
+    ADD CONSTRAINT testaestudiante_test_fk FOREIGN KEY ( test_idtest )
+        REFERENCES test ( idtest );
+
+
+
+-- Informe de Resumen de Oracle SQL Developer Data Modeler: 
+-- 
+-- CREATE TABLE                             7
+-- CREATE INDEX                             2
+-- ALTER TABLE                             15
+-- CREATE VIEW                              0
+-- ALTER VIEW                               0
+-- CREATE PACKAGE                           0
+-- CREATE PACKAGE BODY                      0
+-- CREATE PROCEDURE                         0
+-- CREATE FUNCTION                          0
+-- CREATE TRIGGER                           0
+-- ALTER TRIGGER                            0
+-- CREATE COLLECTION TYPE                   0
+-- CREATE STRUCTURED TYPE                   0
+-- CREATE STRUCTURED TYPE BODY              0
+-- CREATE CLUSTER                           0
+-- CREATE CONTEXT                           0
+-- CREATE DATABASE                          0
+-- CREATE DIMENSION                         0
+-- CREATE DIRECTORY                         0
+-- CREATE DISK GROUP                        0
+-- CREATE ROLE                              0
+-- CREATE ROLLBACK SEGMENT                  0
+-- CREATE SEQUENCE                          0
+-- CREATE MATERIALIZED VIEW                 0
+-- CREATE MATERIALIZED VIEW LOG             0
+-- CREATE SYNONYM                           0
+-- CREATE TABLESPACE                        0
+-- CREATE USER                              0
+-- 
+-- DROP TABLESPACE                          0
+-- DROP DATABASE                            0
+-- 
+-- REDACTION POLICY                         0
+-- 
+-- ORDS DROP SCHEMA                         0
+-- ORDS ENABLE SCHEMA                       0
+-- ORDS ENABLE OBJECT                       0
+-- 
+-- ERRORS                                   0
+-- WARNINGS                                 0
